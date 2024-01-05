@@ -1,0 +1,121 @@
+.abc {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cccc {
+  box-shadow: 1rpx 1rpx 10rpx #929597;
+}
+
+/* 按钮 */
+
+.but {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-bottom: 30rpx;
+  box-shadow: 0rpx -2rpx 1rpx #cfcfcf inset;
+}
+.but button {
+  font-size: 32rpx;
+   line-height: 70rpx;
+   width: 190rpx;
+   height: 70rpx;
+  
+   background-color: rgba(221, 229, 245, 0.342);
+   border: 1rpx solid #88878777;
+  /* box-shadow: 6rpx 6rpx 6rpx #cfcfcf77; */
+}
+.vie {
+  margin-top: 20rpx;
+
+}
+
+/* 列表 */
+.vie {
+  height: 90%;
+}
+
+scroll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.vi {
+  width: 100%;
+  height: 95rpx;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.vi-i {
+  width: 95%;
+  height: 100%;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10rpx;
+  border: 1rpx solid #88878777;
+  box-shadow: 6rpx 6rpx 6rpx #cfcfcf77;
+}
+
+.vi-ii-1 {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.vi-ii-2 {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  /* background-color: chocolate; */
+}
+
+.vi-ii-a {
+  width: 15rpx;
+  height: 15rpx;
+  border: 2px solid #cfcfcf;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10rpx;
+}
+
+
+.im {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #cfcfcf;
+  font-size: 40rpx;
+}

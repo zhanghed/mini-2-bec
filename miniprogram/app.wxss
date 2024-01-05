@@ -1,0 +1,6 @@
+page {
+  font-family: 'BlinkMacSystemFont', 'Gill Sans', 'Gill Sans MT', "Times New Roman";
+  background-color: rgb(255, 255, 255);
+  color: #413f3f;
+  font-size: 28rpx;
+}

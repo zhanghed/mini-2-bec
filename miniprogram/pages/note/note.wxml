@@ -1,0 +1,65 @@
+<view class="abc">
+
+
+  <view class="main">
+
+    <view class="but">
+      <view>
+        <button catchtap='click_all' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+          全选
+        </button>
+      </view>
+      <view>
+        <button catchtap='click_invert' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+          反选
+        </button>
+      </view>
+      <view>
+        <button catchtap='click_delete' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+          删除
+        </button>
+      </view>
+    </view>
+
+    <view class="vie" wx:if="{{arr.length>0}}">
+      <scroll-view scroll-y>
+        <block wx:for="{{arr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="vi">
+            <view class="vi-i" catchtap='one' hover-class="cccc" data-pid='{{index}}'>
+              <view class="vi-ii-a" style="background-color:{{item[2]?'':'#504e4e'}}"></view>
+              <view class="vi-ii-1">
+                {{m1.stringToarray(item[0])[0]}}年{{m1.stringToarray(item[0])[1]}}月{{m1.stringToarray(item[0])[2]}}日
+              </view>
+              <view class="vi-ii-2">
+                {{item[1]}}
+              </view>
+            </view>
+          </view>
+        </block>
+
+
+
+      </scroll-view>
+
+    </view>
+
+  <view wx:else class="im">
+    暂无内容
+  </view>
+
+  </view>
+
+
+
+
+</view>
+
+<!-- wxs_函数 -->
+<wxs module="m1">
+  function stringToarray(string) {
+    return string.split("/")
+  }
+  module.exports = {
+    stringToarray: stringToarray
+  }
+</wxs>
