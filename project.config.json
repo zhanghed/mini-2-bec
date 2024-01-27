@@ -49,26 +49,9 @@
         "tabSize": 4
     },
     "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
-            "list": []
-        },
-        "plugin": {
-            "list": []
-        },
-        "game": {
-            "currentL": -1,
-            "list": []
-        },
-        "gamePlugin": {
-            "list": []
-        },
         "miniprogram": {
             "list": [
                 {
-                    "id": 0,
                     "name": "pages/index/index",
                     "pathName": "pages/index/index",
                     "query": "",
@@ -82,5 +65,6 @@
         "ignore": [],
         "include": []
     },
-    "appid": ""
+    "appid": "",
+    "projectname": "2-bec"
 }
