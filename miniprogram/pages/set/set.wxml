@@ -1,17 +1,8 @@
-<view class="container">
-	<view class="page-body">
-		<form catchsubmit="formSubmit" catchreset="formReset">
-			<!-- 是否自动同步 -->
-			<view class="automatic">
-				<view>自动同步</view>
-				<switch name="switch" />
-			</view>
-
-			<view class="btn-area">
-				<button style="margin: 30rpx 0" type="primary" formType="submit">提交</button>
-				<button style="margin: 30rpx 0" formType="reset">重置</button>
-			</view>
-		</form>
-	</view>
-
+<view class="top_nav">
+	<scroll-view class='scroll_list' scroll-x scroll-with-animation scroll-left="{{nav.left}}">
+		<view class="scroll_item scroll_item{{index}} {{nav.active == index ? 'active' : ''}}" data-idx="{{index}}" wx:for="{{nav.list}}" wx:key="id" bindtap='select'>
+			{{item.name}}
+		</view>
+		<view class="sub" style="width:{{nav.width}}px; left:{{nav.offsetLeft}}px;"></view>
+	</scroll-view>
 </view>
