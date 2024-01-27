@@ -1,0 +1,17 @@
+<view class="container">
+	<view class="page-body">
+		<form catchsubmit="formSubmit" catchreset="formReset">
+			<!-- 是否自动同步 -->
+			<view class="automatic">
+				<view>自动同步</view>
+				<switch name="switch" />
+			</view>
+
+			<view class="btn-area">
+				<button style="margin: 30rpx 0" type="primary" formType="submit">提交</button>
+				<button style="margin: 30rpx 0" formType="reset">重置</button>
+			</view>
+		</form>
+	</view>
+
+</view>

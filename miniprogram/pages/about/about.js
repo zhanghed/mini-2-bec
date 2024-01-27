@@ -35,38 +35,10 @@ Page({
       url: '/pages/one_six_six/one_six_six',
     })
   },
-  // 同步数据
-  sync_data: function () {
-    console.log('同步数据');
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    (async () => {
-      await wx.cloud.callFunction({
-        name: 'user_get',
-        data: {}
-      }).then(res => {
-        let r = res.result.data
-        App.dis = r[0] ? r[0].dis : []
-      })
-      await wx.cloud.callFunction({
-        name: 'text_get',
-        data: {}
-      }).then(res => {
-        let r = res.result.data
-        App.sss = r[0] ? JSON.parse(r[0].text) : {}
-      })
-      await (async () => {
-        App.shows = table_data(Localdate.year, App.dis)
-        wx.setStorageSync('shows', App.shows)
-        wx.setStorageSync('dis', App.dis)
-        wx.setStorageSync('sss', App.sss)
-        wx.reLaunch({
-          url: '/pages/index/index'
-        })
-      })()
-    })()
+  toSet: function () {
+		wx.navigateTo({
+      url: '/pages/set/set',
+    })
   },
 
   /**

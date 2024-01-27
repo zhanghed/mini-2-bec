@@ -1,4 +1,3 @@
-
 App({
 	// 全局变量
 	globalData: {
@@ -6,16 +5,16 @@ App({
 		shows: wx.getStorageSync('shows') ? wx.getStorageSync('shows') : [],
 		no: wx.getStorageSync('no') ? wx.getStorageSync('no') : 0,
 		sss: wx.getStorageSync('sss') ? wx.getStorageSync('sss') : {},
+		//信息 用来判断是否更新等
+		information: wx.getStorageSync('information') ? wx.getStorageSync('information') : {},
 		tabw: 0,
 		tabh: 0,
 		weekh: 0,
 		mainh: 0,
 		buth: 0
-
 	},
 	// 初始化
 	onLaunch: function (options) {
-
 		let windowHeight = wx.getSystemInfoSync().windowHeight
 		//获取系统信息
 		wx.getSystemInfo({
@@ -39,7 +38,7 @@ App({
 		// 初始化云开发
 		wx.cloud.init({
 			traceUser: true,
-			env: 'xxxxxx'
+			env: 'bec2-bec-5gakzu4b27a62a34'
 		})
 		// 小程序更新
 		const updateManager = wx.getUpdateManager()
