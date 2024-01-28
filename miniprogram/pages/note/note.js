@@ -60,7 +60,7 @@ Page({
               }
             }
             App.sss = sss
-            wx.setStorageSync('sss', sss);
+            // wx.setStorageSync('sss', sss);
             console.log('text');
             (async () => { //更新云端数据
               await wx.cloud.callFunction({

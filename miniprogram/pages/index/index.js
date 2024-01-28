@@ -30,39 +30,70 @@ Page({
     mainh: App.mainh,
     buth: App.buth,
     week: ['日', '一', '二', '三', '四', '五', '六'],
-    ran: ran
+    ran: ran,
+    //下划线位置
+    line: {
+      width: 0,
+      left: 0
+    }
   },
-
   // 加载
   onLoad: function (options) {
     wx.showLoading({
       title: '加载中',
       mask: true
     })
-    // 分享且无规则
-    if (options.uuid != null && options.uuid != undefined && App.dis.length == 0) {
-      console.log('分享且无规则')
-      App.dis = JSON.parse(options.uuid).slice(0);
-      (async () => {
-        await wx.cloud.callFunction({
-          name: 'user',
-          data: {
-            dis: App.dis
+    // 从设置页跳转
+    if (options.id == 1) {
+      console.log('设置页跳转')
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      App.shows = table_data(Localdate.year, App.dis)
+      this.shows_data()
+      return
+    }
+    // 正常云端加载
+    this.async_data()
+    // 分享
+    if (options.uuid != null && options.uuid != undefined) {
+      const that = this
+      wx.showModal({
+        title: '是否采用分享的规则？',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('采用分享')
+            wx.showLoading({
+              title: '加载中',
+              mask: true
+            })
+            App.dis = JSON.parse(options.uuid).slice(0);
+            (async () => {
+              await wx.cloud.callFunction({
+                name: 'user',
+                data: {
+                  dis: App.dis
+                }
+              })
+              let text_data = await wx.cloud.callFunction({
+                name: 'text_get',
+                data: {}
+              })
+              App.sss = text_data.result.data[0] ? JSON.parse(text_data.result.data[0].text) : []
+              App.shows = table_data(Localdate.year, App.dis)
+              that.shows_data()
+              return
+            })()
           }
-        })
-        let text_data = await wx.cloud.callFunction({
-          name: 'text_get',
-          data: {}
-        })
-        App.sss = text_data.result.data[0] ? JSON.parse(text_data.result.data[0].text) : []
-
-        App.shows = table_data(Localdate.year, App.dis)
-        wx.setStorageSync('shows', App.shows)
-        wx.setStorageSync('dis', App.dis)
-        wx.setStorageSync('sss', App.sss)
-        this.shows_data()
-      })()
+        }
+      })
     };
+
+  },
+  //正常云端加载
+  async_data: function () {
+    // 正常
     (async () => {
       console.log('正常')
       let user_data = await wx.cloud.callFunction({
@@ -75,66 +106,10 @@ Page({
         data: {}
       })
       App.sss = text_data.result.data[0] ? JSON.parse(text_data.result.data[0].text) : []
-
       App.shows = table_data(Localdate.year, App.dis)
-      wx.setStorageSync('shows', App.shows)
-      wx.setStorageSync('dis', App.dis)
-      wx.setStorageSync('sss', App.sss)
       this.shows_data()
     })()
-    // // 空白
-    // else if (App.shows.length == 0) {
-    //   wx.showLoading({
-    //     title: '加载中',
-    //     mask: true
-    //   })
-    //   console.log('空白');
-    //   (async () => {
-    //     await wx.cloud.callFunction({
-    //       name: 'user_get',
-    //       data: {}
-    //     }).then(res => {
-    //       let r = res.result.data
-    //       App.dis = r[0] ? r[0].dis : []
-    //     })
-    //     await wx.cloud.callFunction({
-    //       name: 'text_get',
-    //       data: {}
-    //     }).then(res => {
-    //       let r = res.result.data
-    //       App.sss = r[0] ? JSON.parse(r[0].text) : {}
-    //     })
-    //     await (async () => {
-    //       App.shows = table_data(Localdate.year, App.dis)
-    //       wx.setStorageSync('shows', App.shows)
-    //       wx.setStorageSync('dis', App.dis)
-    //       wx.setStorageSync('sss', App.sss)
-    //       this.shows_data()
-    //     })()
-    //   })()
-    // }
-    // // 跨年
-    // else if (App.shows[0][0][10].sYear != Localdate.year) {
-    //   wx.showLoading({
-    //     title: '加载中',
-    //     mask: true
-    //   })
-    //   console.log('跨年')
-    //   App.shows = table_data(Localdate.year, App.dis)
-    //   wx.setStorageSync('shows', App.shows)
-    //   this.shows_data()
-    // }
-    // // 正常
-    // else {
-    //   wx.showLoading({
-    //     title: '加载中',
-    //     mask: true
-    //   })
-    //   console.log('正常')
-    //   this.shows_data()
-    // }
   },
-
   // 显示
   shows_data: function () {
     // 今天
@@ -151,12 +126,13 @@ Page({
       show: App.shows[App.no],
       sss: App.sss,
     })
-    wx.hideLoading()
     this.setData({
       idd: 's' + this.data.year + this.data.month,
     })
+    // 下划线位置
+    this.funLine()
+    wx.hideLoading()
   },
-
   // 选择标签
   click_tab: function (event) {
     App.no = Number(event.currentTarget.dataset.pid)
@@ -164,9 +140,24 @@ Page({
       no: App.no,
       show: App.shows[App.no]
     })
-    wx.setStorageSync('no', App.no)
+    // wx.setStorageSync('no', App.no)
+    // 下划线位置
+    this.funLine()
   },
-
+  // 下划线
+  funLine: function (event) {
+    // 元素位置大小
+    let query = wx.createSelectorQuery()
+    query.select('.line').boundingClientRect((rect) => {
+      const line = {
+        width: rect.width,
+        left: rect.left
+      }
+      this.setData({
+        line
+      })
+    }).exec()
+  },
   //更改日期
   set_date: function (e) {
     if (Number(e.currentTarget.dataset.pid)) {
@@ -185,10 +176,6 @@ Page({
         idd: 's' + this.data.year + this.data.month,
       })
     } else {
-      wx.showLoading({
-        title: '加载中',
-        mask: true
-      })
       App.shows = table_data(this.data.year, App.dis)
       this.shows_data()
     }
@@ -207,7 +194,6 @@ Page({
       zi: !this.data.zi
     })
   },
-
   //输入框输入完成
   confirm: function (event) {
     let x = event.detail.value.trim() ? event.detail.value.trim() : false
@@ -227,7 +213,7 @@ Page({
           sss: App.sss
         })
       }
-      wx.setStorageSync('sss', App.sss);
+      // wx.setStorageSync('sss', App.sss);
       wx.cloud.callFunction({
         name: 'text',
         data: {
@@ -236,7 +222,6 @@ Page({
       })
     }
   },
-
   //输入框失去焦点
   blur: function (event) {
     this.setData({
@@ -259,7 +244,6 @@ Page({
       url: '/pages/about/about'
     })
   },
-
   //右上角分享
   onShareAppMessage: function () {
     if (App.dis.length > 0) {
@@ -269,15 +253,11 @@ Page({
       }
     }
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  // 生命周期函数--监听页面显示
   onShow: function () {
     this.setData({
       sss: App.sss
     })
   }
-
-
 
 })

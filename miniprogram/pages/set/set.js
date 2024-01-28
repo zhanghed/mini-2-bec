@@ -9,6 +9,6 @@ Page({
 			curtab: curtab,
 		})
 	}
-
+  
 
 })
