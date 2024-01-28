@@ -1,8 +1,6 @@
-<view class="top_nav">
-	<scroll-view class='scroll_list' scroll-x scroll-with-animation scroll-left="{{nav.left}}">
-		<view class="scroll_item scroll_item{{index}} {{nav.active == index ? 'active' : ''}}" data-idx="{{index}}" wx:for="{{nav.list}}" wx:key="id" bindtap='select'>
-			{{item.name}}
-		</view>
-		<view class="sub" style="width:{{nav.width}}px; left:{{nav.offsetLeft}}px;"></view>
-	</scroll-view>
+<view style="width: 100%;display:flex;align-items: center;justify-content: space-between;">
+	<block wx:for="{{[111,222,333]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+		<view class="tab_item" id="{{index}}" catchtap="tabHandle">{{item}}</view>
+	</block>
 </view>
+<view style="transform:{{curtab}}; transition:all 0.3s;height: 3rpx;width: 250rpx;background: rgb(173, 15, 15);"></view>
