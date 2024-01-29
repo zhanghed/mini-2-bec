@@ -1,101 +1,107 @@
 <view class='abc'>
-	<view class='mask' hidden='{{!zi}}'></view>
-	<!-- 按钮 -->
-	<view class='main'>
-		<view>
-			<button catchtap='funTian' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>
-				添 加
-			</button>
-		</view>
-		<view>
-			<button catchtap='funQue' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>
-				生 效
-			</button>
-		</view>
-	</view>
+  <view class='mask' hidden='{{!zi}}'></view>
+  <!-- 按钮 -->
+  <view class='main'>
+    <view>
+      <button catchtap='funTian' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>
+        添 加
+      </button>
+    </view>
+    <view>
+      <button catchtap='funQue' plain='true' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>
+        生 效
+      </button>
+    </view>
+  </view>
 
-	<!--标签-->
-	<view class="tabPa" wx:if="{{dis.length}}">
-		<block wx:for="{{dis}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-			<view class="tab-1">
-				<view class="mm" id="i-{{index}}" catchtap="funPa" data-pid='{{index}}' style="box-shadow: {{no==index?'0px -4rpx 0px #3d3c3c inset':''}};">
-					<view class="mm-3" wx:if="{{no==index}}" catchtap='fun_Zii' data-pid='{{[3]}}'>
-						<image src='/images/chong.svg' style='width: 30rpx;height: 30rpx;'></image>
-					</view>
-					<view class="mm-1">{{item['listName']}}</view>
-					<view class="mm-2" wx:if="{{no==index}}" catchtap='funDle' data-pid='{{index}}'>
-						<image src='/images/del.svg' style='width: 30rpx;height: 30rpx;'></image>
-					</view>
-				</view>
-			</view>
-		</block>
-	</view>
+  <!--标签-->
+  <view class="tabPa" wx:if="{{dis.length}}">
+    <block wx:for="{{dis}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class="tab-1">
+        <view class="mm" id="i-{{index}}" catchtap="funPa" data-pid='{{index}}' style="box-shadow: {{no==index?'0px -4rpx 0px #3d3c3c inset':''}};">
+          <view class="mm-3" wx:if="{{no==index}}" catchtap='fun_Zii' data-pid='{{[3]}}'>
+            <image src='/images/chong.svg' style='width: 30rpx;height: 30rpx;'></image>
+          </view>
+          <view class="mm-1">{{item['listName']}}</view>
+          <view class="mm-2" wx:if="{{no==index}}" catchtap='funDle' data-pid='{{index}}'>
+            <image src='/images/del.svg' style='width: 30rpx;height: 30rpx;'></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 
-	<!-- 日期 -->
-	<picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="funDate" fields='day' wx:if="{{dis.length}}">
-		<view class='c1'>
-			<view class='c1-t'>
-				<view style='width: 15rpx;'></view>
-				<view>
-					起始日期：
-					<span style='font-size:20rpx;'>(点击此处修改)</span>
-				</view>
-			</view>
-			<view class='c1-tt'>
-				<span>{{show[0][0]}}</span>
-				<span> 年 </span>
-				<span>{{show[0][1].length>1?show[0][1]:'0'+show[0][1]}}</span>
-				<span> 月 </span>
-				<span>{{show[0][2].length>1?show[0][2]:'0'+show[0][2]}}</span>
-				<span> 日 </span>
-			</view>
-		</view>
-	</picker>
+  <!-- 日期 -->
+  <picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="funDate" fields='day' wx:if="{{dis.length}}">
+    <view class='c1'>
+      <view class='c1-t'>
+        <view style='width: 15rpx;'></view>
+        <view>
+          起始日期：
+          <span style='font-size:20rpx;'>(点击此处修改)</span>
+        </view>
+      </view>
+      <view class='c1-tt'>
+        <span>{{show[0][0]}}</span>
+        <span> 年 </span>
+        <span>{{show[0][1].length>1?show[0][1]:'0'+show[0][1]}}</span>
+        <span> 月 </span>
+        <span>{{show[0][2].length>1?show[0][2]:'0'+show[0][2]}}</span>
+        <span> 日 </span>
+      </view>
+    </view>
+  </picker>
 
-	<view class='aaa' wx:if="{{dis.length}}">
-		<!-- 规则 -->
-		<view class='c2'>
-			<view class='c2-t'>
-				<!-- <image src='/images/gui.svg' style='width: 40rpx;height: 40rpx;'></image> -->
-				<view style='width: 15rpx;'></view>
-				<view catchtap="funNaa">
-					规则序列：
-					<span style='font-size:20rpx;'>(点击按钮编辑)</span>
-				</view>
-			</view>
-			<view class='c2-tt'>
-				<block wx:for="{{show[1]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-					<span class='{{item.color}}' catchtap="fun_Zii" data-pid='{{[2,index]}}'>{{item.name}}</span>
-				</block>
-			</view>
-		</view>
-		<!-- 输入框 -->
-		<view wx:if="{{zi}}" style="width:100%;size:20rpx">
-			<input class='zi' value='{{}}' bindblur="funZii" bindconfirm='bindconfirm' maxlength='12' focus="{{zi}}" placeholder="请编辑内容（三个字以内）"></input>
-		</view>
-		<!-- 键盘 -->
-		<view class='set-b' wx:if="{{dis.length}}">
-			<view style='width:100%;height:20rpx;'></view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>休息</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='全天'>全天</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='白班'>白班</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='夜班'>夜班</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='早班'>早班</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='中班'>中班</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='晚班'>晚班</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='大夜'>大夜</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='小夜'>小夜</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='大白'>大白</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='小白'>小白</view>
-			<view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='值班'>值班</view>
-			<view class='bb' catchtap='funBac' data-pid='{{true}}' hover-class=' cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">清空</view>
-			<view class=' bb' catchtap='fun_Zii' data-pid='{{[1]}}' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">自定义</view>
-			<view class='bb' catchtap='funBac' data-pid='{{false}}' hover-class=' cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">退格</view>
-		</view>
+  <view class='aaa' wx:if="{{dis.length}}">
+    <!-- 规则 -->
+    <view class='c2'>
+      <view class='c2-t'>
+        <!-- <image src='/images/gui.svg' style='width: 40rpx;height: 40rpx;'></image> -->
+        <view style='width: 15rpx;'></view>
+        <view catchtap="funNaa">
+          规则序列：
+          <span style='font-size:20rpx;'>(点击按钮编辑)</span>
+        </view>
+      </view>
+      <view class='c2-tt'>
+        <block wx:for="{{show[1]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <span class='{{item.color}}' catchtap="fun_Zii" data-pid='{{[2,index]}}'>{{item.name}}</span>
+        </block>
+        <!-- 规则选项 -->
+        <view>
+          <view>规则序列</view>
+          <picker bindchange="bindPickerChange" range="{{range}}">{{"+"}}
+          </picker>
+        </view>
+      </view>
+    </view>
+    <!-- 输入框 -->
+    <view wx:if="{{zi}}" style="width:100%;size:20rpx">
+      <input class='zi' value='{{}}' bindblur="funZii" bindconfirm='bindconfirm' maxlength='12' focus="{{zi}}" placeholder="请编辑内容（三个字以内）"></input>
+    </view>
+    <!-- 键盘 -->
+    <view class='set-b' wx:if="{{dis.length}}">
+      <view style='width:100%;height:20rpx;'></view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='休息'>休息</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='全天'>全天</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='白班'>白班</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='夜班'>夜班</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='早班'>早班</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='中班'>中班</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='晚班'>晚班</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='大夜'>大夜</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='小夜'>小夜</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='大白'>大白</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='小白'>小白</view>
+      <view class='bb' catchtap='funList' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' data-pid='值班'>值班</view>
+      <view class='bb' catchtap='funBac' data-pid='{{true}}' hover-class=' cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">清空</view>
+      <view class=' bb' catchtap='fun_Zii' data-pid='{{[1]}}' hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">自定义</view>
+      <view class='bb' catchtap='funBac' data-pid='{{false}}' hover-class=' cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}' style="width:32%">退格</view>
+    </view>
 
-	</view>
-	<view wx:else class="im">
-		暂无规则
-	</view>
+  </view>
+  <view wx:else class="im">
+    暂无规则
+  </view>
 
 </view>

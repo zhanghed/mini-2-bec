@@ -27,10 +27,10 @@
 			</view>
 		</view>
 
-		<view>
+		<!-- <view>
 			<button class="mini-btn" type="primary" size="mini" bind:tap="submit">按钮</button>
 			<button class="mini-btn" type="warn" size="mini" bind:tap="reset">按钮</button>
-		</view>
+		</view> -->
 
 	</view>
 
