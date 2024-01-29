@@ -120,7 +120,6 @@ const main = function (year, dis = []) {
 		}
 		arr.push(temp)
 	}
-	console.log('table_data')
 	return arr
 }
 

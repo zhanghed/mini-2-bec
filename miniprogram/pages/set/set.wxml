@@ -1,6 +1,37 @@
-<view style="width: 100%;display:flex;align-items: center;justify-content: space-between;">
-	<block wx:for="{{[111,222,333]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-		<view class="tab_item" id="{{index}}" catchtap="tabHandle">{{item}}</view>
-	</block>
+<view class="container">
+	<view>
+		<view>
+			<view>
+				<view>规则名称</view>
+				<view>
+					<input maxlength="3" placeholder="最大输入长度为3" bindinput="bindKeyInput" />
+				</view>
+			</view>
+
+			<view>
+				<view>规则开始日期</view>
+				<picker mode="date" value="{{date}}" start="1900-01-01" end="2049-12-31" bindchange="bindDateChange">
+					<view>
+						当前选择: {{date}}
+					</view>
+				</picker>
+			</view>
+
+			<view>
+				<view>规则序列</view>
+				<picker bindchange="bindPickerChange" value="0" range="{{array}}">
+					<view>123
+						{{dis[no].listRule}}
+					</view>
+				</picker>
+			</view>
+		</view>
+
+		<view>
+			<button class="mini-btn" type="primary" size="mini" bind:tap="submit">按钮</button>
+			<button class="mini-btn" type="warn" size="mini" bind:tap="reset">按钮</button>
+		</view>
+
+	</view>
+
 </view>
-<view style="transform:{{curtab}}; transition:all 0.3s;height: 3rpx;width: 250rpx;background: rgb(173, 15, 15);"></view>

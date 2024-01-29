@@ -1,20 +1,30 @@
-.abox{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
-  position: relative;
-  padding-bottom: 20rpx;
-}
 
-.tabTrue{
-  color: red;
+.sanjiao{
+  width: 18rpx;
+  height: 10rpx;
+  margin-left: 20rpx;
+  transition: 0.5s;/* 选转图片过渡 */
 }
-.b{
-  background: red;
-  height: 4rpx;
-  width:64rpx;
+.select{
   position: absolute;
-  bottom: 0;
-  transition: all .3s linear;
+  z-index: 10;
+  border: 2rpx solid #aaaaaa;
+  padding: 0 8rpx;
+  top:46rpx;
+  left: -10rpx;
+  width: 210rpx;
+  overflow: auto;
+  height: 0;
+  max-height: 200rpx;
+  background-color:#fff;
+  box-sizing: border-box;
+  transition: height 0.5s;/* 高度变换过渡 */
+}
+.select .type{
+  color: #aaaaaa;
+  border-top: 2px solid #dadada;
+  padding: 6rpx;
+}
+.select :first-child{
+  border: 0;
 }

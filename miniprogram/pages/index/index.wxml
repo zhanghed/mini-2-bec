@@ -1,97 +1,92 @@
 <view class='abc'>
-  <!--标签-->
-  <view wx:if="{{dis.length>=1}}" class="tab" style="height: {{tabh+'px'}};width: {{tabw+'px'}}">
-    <block wx:for="{{dis}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <!-- <view class="tabi" catchtap="click_tab" data-pid='{{index}}' style="box-shadow: {{no==index&&dis.length>1?'0px -5rpx 0px #3d3c3c inset':''}};">
-        <span>
-          {{item['listName']}}</span>
-      </view> -->
-      <view class="tabi {{no==index?'line':''}}" catchtap="click_tab" data-pid='{{index}}'>
-        <span>
-          {{item['listName']}}</span>
-      </view>
-    </block>
-  </view>
-  <view style="background-color: rgb(255, 0, 0);height: 6rpx;width: {{line.width}}px;transform:translatex({{line.left}}px); transition:all 0.3s;"></view>
-  <!-- <view wx:else class="tabs" style="height: {{tabh+'px'}};width: {{tabw+'px'}};">
-    <view class="tabs">
-      标签日历
-    </view>
-  </view> -->
+	<!--标签-->
+	<view wx:if="{{dis.length>=1}}" class="tab" style="height: {{tabh+'px'}};width: {{tabw+'px'}}">
+		<block wx:for="{{dis}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+			<view class="tabi {{no==index?'line':''}}" catchtap="click_tab" data-pid='{{index}}'>
+				<span>
+					{{item['listName']}}</span>
+			</view>
+		</block>
+	</view>
+	<!-- 占位 -->
+	<view wx:else class="tab2" style="height: {{tabh+'px'}};width: {{tabw+'px'}};">
+	</view>
+	<!-- 下划线 line -->
+	<view style="background-color: red;height: 6rpx;width: {{line.width}}px;transform:translatex({{line.left}}px); transition:all 0.3s;"></view>
 
-  <!-- 星期 -->
-  <view class='week' style="height: {{weekh+'px'}}">
-    <view>日</view>
-    <view>一</view>
-    <view>二</view>
-    <view>三</view>
-    <view>四</view>
-    <view>五</view>
-    <view>六</view>
-  </view>
+	<!-- 星期 -->
+	<view class='week' style="height: {{weekh+'px'}}">
+		<view>日</view>
+		<view>一</view>
+		<view>二</view>
+		<view>三</view>
+		<view>四</view>
+		<view>五</view>
+		<view>六</view>
+	</view>
 
-  <!-- 日历 -->
-  <view class='main' style="height: {{mainh+'px'}};">
-    <scroll-view scroll-y scroll-into-view="{{idd}}" scroll-with-animation enable-back-to-top>
-      <!-- 所有的数据 -->
-      <block wx:for="{{show}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-        <!-- 月头 -->
-        <view class='idm' id='s{{item[10].sYear}}{{item[10].sMonth}}'>
-          <block wx:for="{{week}}" wx:for-item="i" wx:for-index="index" wx:key="index">
-            <view>
-              <view wx:if="{{item[index].sDay==1}}" class='imd_month'>
-                {{item[index].sMonth}}
-              </view>
-            </view>
-          </block>
-        </view>
-        <!-- 月数据 -->
-        <view class='main-i'>
-          <block wx:for="{{item}}" wx:for-item="i" wx:for-index="index" wx:key="index">
-            <!-- 具体格子 -->
-            <view class='main-ii' style="background-color: {{i.sDay?'#d0d0d141':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}' hover-class="{{i.sDay?'cccc':''}}" hover-start-time="{{i.sDay?'10':''}}" hover-stay-time="{{i.sDay?'40':''}}" hover-stop-propagation="{{i.sDay?'{{true}}':''}}">
+	<!-- 日历 -->
+	<view class='main' style="height: {{mainh+'px'}};">
+		<scroll-view scroll-y scroll-into-view="{{idd}}" scroll-with-animation enable-back-to-top>
+			<!-- 所有的数据 -->
+			<block wx:for="{{show}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+				<!-- 月头 -->
+				<view class='idm' id='s{{item[10].sYear}}{{item[10].sMonth}}'>
+					<block wx:for="{{week}}" wx:for-item="i" wx:for-index="index" wx:key="index">
+						<view>
+							<view wx:if="{{item[index].sDay==1}}" class='imd_month'>
+								{{item[index].sMonth}}
+							</view>
+						</view>
+					</block>
+				</view>
+				<!-- 月数据 -->
+				<view class='main-i'>
+					<block wx:for="{{item}}" wx:for-item="i" wx:for-index="index" wx:key="index">
+						<!-- 具体格子 -->
+						<view class='main-ii' style="background-color: {{i.sDay?'#f6f6f6':''}};box-shadow: {{i.now_day?'red 0px 0px 0px 4rpx;':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}'>
 
-              <!-- 记事 -->
-              <view class="sss main-iii">
-                <span>
-                  {{sss[m1.arrayTostring([i.sYear,i.sMonth,i.sDay])]}}
-                </span>
-              </view>
-              <!-- 日历 -->
-              <view class='main-iii'>
-                <view class="main-iiii" style="font-size: {{i.now_day?'30rpx':''}};color: {{i.now_day?'red':''}}">
-                  {{i.now_day?"今":i.sDay}}
-                </view>
-              </view>
-              <!-- 农历//优先级：农历节日且公历节日//农历节日//公历节日//节气//月初一//农历 -->
-              <view class='main-iii' style="font-size: {{'15rpx'}}">{{((i.lunarFestival && i.solarFestival) && (i.lunarFestival +
+							<!-- 记事 -->
+							<view class="sss main-iii" style="color: red;">
+								<span>
+									{{sss[m1.arrayTostring([i.sYear,i.sMonth,i.sDay])]}}
+								</span>
+							</view>
+							<!-- 日历 -->
+							<view class='main-iii'>
+								<view class="main-iiii" style="">
+									{{i.sDay}}
+								</view>
+							</view>
+							<!-- 农历//优先级：农历节日且公历节日//农历节日//公历节日//节气//月初一//农历 -->
+							<view class='main-iii' style="font-size: {{'15rpx'}}">{{((i.lunarFestival && i.solarFestival) && (i.lunarFestival +
                 '\n' + i.solarFestival)) || i.lunarFestival || i.solarFestival || i.solarTerms || (i.lunarDay
                 == "初一" && (i.lunarMonth + '月')) || i.lunarDay}}</view>
-              <!-- 倒班 -->
-              <view class='main-iii' style="text-align: center;font-size: 18rpx;border-radius: {{'50rpx'}}" class='ii-li {{i.li&&i.color?i.color:""||i.li?"zidingyi":""}}'>{{i.li}}</view>
+							<!-- 倒班 -->
+							<view class='main-iii' style="width: 85%;text-align: center;font-size: 18rpx;border-radius: {{'50rpx'}}" class='ii-li {{i.li&&i.color?i.color:""||i.li?"zidingyi":""}}'>{{i.li}}</view>
 
-            </view>
-          </block>
-        </view>
+						</view>
+					</block>
+				</view>
 
-      </block>
+			</block>
 
-    </scroll-view>
-  </view>
+		</scroll-view>
+	</view>
 
-  <!-- 按钮 -->
-  <view class='pl' style="height: {{buth+'px'}};">
+	<!-- 按钮 -->
+	<view class='pl' style="height: {{buth+'px'}};">
 
-    <view hover-class='cccc' catchtap='to_about' style="text-align: center;border-radius: 10%;">
-      <image src='/images/a.svg' style="width: 65rpx;height:65rpx;"></image>
-    </view>
-    <view style="width: 10%;"></view>
-    <view hover-class='cccc' style="text-align: center;border-radius: 10%;">
-      <picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="set_date" fields='month'>
-        {{year}}
-      </picker>
-    </view>
-  </view>
+		<view catchtap='to_about' style="text-align: center;border-radius: 10%;">
+			<image src='/images/a.svg' style="width: 65rpx;height:65rpx;"></image>
+		</view>
+		<view style="width: 10%;"></view>
+		<view style="text-align: center;border-radius: 10%;">
+			<picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="set_date" fields='month'>
+				{{year}}
+			</picker>
+		</view>
+	</view>
 
 </view>
 
@@ -101,18 +96,18 @@
 
 <!-- 输入框 -->
 <view wx:if="{{zi}}" style="width:100%;size:20rpx">
-  <view class='txt'>
-    <view class="txt-top">{{k2[0]}}年{{k2[1]}}月{{k2[2]}}日</view>
-    <input class="txt-body" value='{{sss[k]}}' bindblur="blur" bindconfirm='confirm' maxlength='12' focus="{{zi}}" placeholder="请编辑内容（12个字以内）"></input>
-  </view>
+	<view class='txt'>
+		<view class="txt-top">{{k2[0]}}年{{k2[1]}}月{{k2[2]}}日</view>
+		<input class="txt-body" value='{{sss[k]}}' bindblur="blur" bindconfirm='confirm' maxlength='12' focus="{{zi}}" placeholder="请编辑内容（12个字以内）"></input>
+	</view>
 </view>
 
 <!-- wxs_函数 -->
 <wxs module="m1">
-  function arrayTostring(array) {
-    return array.join("z")
-  }
-  module.exports = {
-    arrayTostring: arrayTostring
-  }
+	function arrayTostring(array) {
+		return array.join("z")
+	}
+	module.exports = {
+		arrayTostring: arrayTostring
+	}
 </wxs>

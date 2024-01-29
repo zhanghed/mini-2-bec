@@ -1,4 +1,6 @@
-<!--pages/one_six_six.wxml-->
-<web-view
-  src="http://mp.weixin.qq.com/s?__biz=MzU5NTY2NDY5Nw==&mid=2247483894&idx=1&sn=9ef9195b80c7d6a1b193954281264484&chksm=fe6fcba0c91842b6556b671d26fc31bce9c4075a0b781d41285d38d5bf0a9b8dfe901ac3346f#rd">
-</web-view>
+<view class="main">
+
+	<view class="main-i">
+		<image show-menu-by-longpress="{{true}}" src="/images/me.jpg" mode="widthFix" />
+	</view>
+</view>

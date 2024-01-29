@@ -1,1 +1,15 @@
-/* pages/one_six_six.wxss */
+.main {
+	width: 100vw;
+	height: 100vh;
+}
+
+.main-i {
+	width: 100%;
+	font-size: 30rpx;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+
+}

@@ -1,16 +1,10 @@
 App({
   // 全局变量
   globalData: {
-    // dis: wx.getStorageSync('dis') ? wx.getStorageSync('dis') : [],
     dis: [],
-    // shows: wx.getStorageSync('shows') ? wx.getStorageSync('shows') : [],
     shows: [],
-    // no: wx.getStorageSync('no') ? wx.getStorageSync('no') : 0,
     no: 0,
-    // sss: wx.getStorageSync('sss') ? wx.getStorageSync('sss') : {},
     sss: {},
-    //信息 用来判断是否更新等
-    // information: wx.getStorageSync('information') ? wx.getStorageSync('information') : {},
     information: {},
     tabw: 0,
     tabh: 0,
