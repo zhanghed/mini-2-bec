@@ -4,7 +4,7 @@
 			<!-- 规则名称 -->
 			<view class="main-ii">
 				<view>规则名称（3个字以内）</view>
-				<input class="txt" value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
+				<input style="text-align: start;" class="txt" value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
 			</view>
 			<!-- 开始日期 -->
 			<view class="main-ii">
