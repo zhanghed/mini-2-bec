@@ -3,19 +3,21 @@
 		<view class="main-i">
 			<!-- 规则名称 -->
 			<view class="main-ii">
-				<view>规则名称(三个字以内):</view>
-				<input value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
+				<view>规则名称（3个字以内）</view>
+				<input class="txt" value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
 			</view>
 			<!-- 开始日期 -->
 			<view class="main-ii">
-				<view>开始日期</view>
-				<picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
-					{{item.listDate}}
+				<view>开始日期（规则序列开始日期）</view>
+				<picker style="width: 100%;" mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
+					<view class="txt">
+						{{item.listDate}}
+					</view>
 				</picker>
 			</view>
 			<!-- 规则序列 -->
 			<view class="main-ii">
-				<view>规则序列</view>
+				<view>规则序列（50个标签以内）</view>
 				<view class="rules">
 					<block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
 						<view class="rulesitem {{itemR.color}}">
@@ -25,7 +27,7 @@
 					<!-- 规则选项 -->
 					<!-- 减 -->
 					<view class="picker1">
-						<view class="picker2" >
+						<view class="picker2">
 							<image catchtap='listRulePopFun' data-pid="{{index}}" src='/images/jian.svg' style=" width: 60rpx;height:60rpx;">
 							</image>
 						</view>
