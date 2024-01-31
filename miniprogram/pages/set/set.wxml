@@ -1,37 +1,45 @@
-<view class="container">
-	<view>
-		<view>
-			<view>
-				<view>规则名称</view>
-				<view>
-					<input maxlength="3" placeholder="最大输入长度为3" bindinput="bindKeyInput" />
+<view class="main">
+	<block wx:for="{{show}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+		<view class="main-i">
+			<!-- 规则名称 -->
+			<view class="main-ii">
+				<view>规则名称(三个字以内):</view>
+				<input value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
+			</view>
+			<!-- 开始日期 -->
+			<view class="main-ii">
+				<view>开始日期</view>
+				<picker mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
+					{{item.listDate}}
+				</picker>
+			</view>
+			<!-- 规则序列 -->
+			<view class="main-ii">
+				<view>规则序列</view>
+				<view class="rules">
+					<block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
+						<view class="rulesitem {{itemR.color}}">
+							{{itemR.name}}
+						</view>
+					</block>
+					<!-- 规则选项 -->
+					<!-- 减 -->
+					<view class="picker1">
+						<view class="picker2" >
+							<image catchtap='listRulePopFun' data-pid="{{index}}" src='/images/jian.svg' style=" width: 60rpx;height:60rpx;">
+							</image>
+						</view>
+					</view>
+					<!-- 加 -->
+					<picker class="picker1" wx:if="{{item.listRule.length<50}}" bindchange="listRuleFun" range="{{range}}" data-pid="{{index}}">
+						<view class="picker2">
+							<image src='/images/jia.svg' style=" width: 60rpx;height:60rpx;">
+							</image>
+						</view>
+					</picker>
 				</view>
 			</view>
-
-			<view>
-				<view>规则开始日期</view>
-				<picker mode="date" value="{{date}}" start="1900-01-01" end="2049-12-31" bindchange="bindDateChange">
-					<view>
-						当前选择: {{date}}
-					</view>
-				</picker>
-			</view>
-
-			<view>
-				<view>规则序列</view>
-				<picker bindchange="bindPickerChange" value="0" range="{{array}}">
-					<view>123
-						{{dis[no].listRule}}
-					</view>
-				</picker>
-			</view>
 		</view>
-
-		<!-- <view>
-			<button class="mini-btn" type="primary" size="mini" bind:tap="submit">按钮</button>
-			<button class="mini-btn" type="warn" size="mini" bind:tap="reset">按钮</button>
-		</view> -->
-
-	</view>
+	</block>
 
 </view>

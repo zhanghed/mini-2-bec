@@ -78,7 +78,7 @@
 	<view class='pl' style="height: {{buth+'px'}};">
 
 		<view catchtap='to_about' style="text-align: center;border-radius: 10%;">
-			<image src='/images/a.svg' style="width: 65rpx;height:65rpx;"></image>
+			<image src='/images/shezhi.svg' style="width: 65rpx;height:65rpx;"></image>
 		</view>
 		<view style="width: 10%;"></view>
 		<view style="text-align: center;border-radius: 10%;">

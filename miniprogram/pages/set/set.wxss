@@ -1,30 +1,130 @@
+.main {
+	width: 100vw;
+	/* height: 100vh; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 35rpx;
+}
 
-.sanjiao{
-  width: 18rpx;
-  height: 10rpx;
-  margin-left: 20rpx;
-  transition: 0.5s;/* 选转图片过渡 */
+.main-i {
+	width: 85%;
+	padding: 20rpx;
+	margin: 20rpx;
+	border: 2rpx solid #cfcdcd77;
+	/* box-shadow: 10rpx 10rpx 10rpx #cfcfcf77; */
 }
-.select{
-  position: absolute;
-  z-index: 10;
-  border: 2rpx solid #aaaaaa;
-  padding: 0 8rpx;
-  top:46rpx;
-  left: -10rpx;
-  width: 210rpx;
-  overflow: auto;
-  height: 0;
-  max-height: 200rpx;
-  background-color:#fff;
-  box-sizing: border-box;
-  transition: height 0.5s;/* 高度变换过渡 */
+
+.main-ii {
+	width: 100%;
+	margin: 20rpx 0;
 }
-.select .type{
-  color: #aaaaaa;
-  border-top: 2px solid #dadada;
-  padding: 6rpx;
+
+.rules {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 30rpx;
 }
-.select :first-child{
-  border: 0;
+
+.rulesitem {
+	width: 16%;
+	/* padding: 2rpx; */
+	margin: 8rpx 3rpx;
+	border-radius: 50rpx;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	font-size: 28rpx;
+	/* background-color:chartreuse; */
+}
+
+.picker1 {
+	width: 16%;
+	/* padding: 2rpx; */
+	margin: 0rpx 3rpx;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.picker2 {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 颜色 */
+
+/* 白天 */
+
+.baiban {
+	background: #f8e7f4;
+}
+
+.zaoban {
+	background: #4fc1e9;
+}
+
+.zhongban {
+	background: #f8d376;
+}
+
+.dabai {
+	background: #fc7a96;
+}
+
+.xiaobai {
+	background: #f79963;
+}
+
+/* 夜天 */
+
+.yeban {
+	background: #7d838b;
+}
+
+.wanban {
+	background: #ccd1d9;
+}
+
+.daye {
+	background: #497abb;
+}
+
+.xiaoye {
+	background: #7f66bd;
+}
+
+/* 全天 */
+
+.quantian {
+	background: #f082cf;
+}
+
+/* 值班 */
+
+.zhiban {
+	background: #acdf77;
+}
+
+/* 休息 */
+
+.xiuxi {
+	background: #46d1ae;
+}
+
+.zidingyi {
+	background: #d2f1f1;
 }
