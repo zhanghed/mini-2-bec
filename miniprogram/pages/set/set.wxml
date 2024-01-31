@@ -1,47 +1,63 @@
-<view class="main">
-	<block wx:for="{{show}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-		<view class="main-i">
-			<!-- 规则名称 -->
-			<view class="main-ii">
-				<view>规则名称（3个字以内）</view>
-				<input style="text-align: start;" class="txt" value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='12'></input>
-			</view>
-			<!-- 开始日期 -->
-			<view class="main-ii">
-				<view>开始日期（规则序列开始日期）</view>
-				<picker style="width: 100%;" mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
-					<view class="txt">
-						{{item.listDate}}
-					</view>
-				</picker>
-			</view>
-			<!-- 规则序列 -->
-			<view class="main-ii">
-				<view>规则序列（50个标签以内）</view>
-				<view class="rules">
-					<block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
-						<view class="rulesitem {{itemR.color}}">
-							{{itemR.name}}
-						</view>
-					</block>
-					<!-- 规则选项 -->
-					<!-- 减 -->
-					<view class="picker1">
-						<view class="picker2">
-							<image catchtap='listRulePopFun' data-pid="{{index}}" src='/images/jian.svg' style=" width: 60rpx;height:60rpx;">
-							</image>
-						</view>
-					</view>
-					<!-- 加 -->
-					<picker class="picker1" wx:if="{{item.listRule.length<50}}" bindchange="listRuleFun" range="{{range}}" data-pid="{{index}}">
-						<view class="picker2">
-							<image src='/images/jia.svg' style=" width: 60rpx;height:60rpx;">
-							</image>
-						</view>
-					</picker>
-				</view>
-			</view>
-		</view>
-	</block>
+<view class="a">
+  <scroll-view scroll-y scroll-with-animation enable-back-to-top>
+    <view class="main">
+      <block wx:for="{{show}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <view class="main-i">
+          <!-- 规则名称 -->
+          <view class="main-ii">
+            <view>规则名称（3个字以内）</view>
+            <input style="text-align: start;" class="txt" value="{{item.listName}}" bindconfirm='listNameFun' data-pid="{{index}}" maxlength='3'></input>
+          </view>
+          <!-- 开始日期 -->
+          <view class="main-ii">
+            <view>开始日期（规则开始日期）</view>
+            <picker style="width: 100%;" mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
+              <view class="txt">
+                {{item.listDate}}
+              </view>
+            </picker>
+          </view>
+          <!-- 规则序列 -->
+          <view class="main-ii">
+            <view>规则序列（50个标签以内）</view>
+            <view class="rules">
+              <block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
+                <view class="rulesitem {{itemR.color}}">
+                  {{itemR.name}}
+                </view>
+              </block>
+              <!-- 规则选项 -->
+              <!-- 减 -->
+              <view class="picker1" wx:if="{{item.listRule.length>0}}">
+                <view class="picker2">
+                  <image catchtap='listRulePopFun' data-pid="{{index}}" src='/images/jian.svg' style=" width: 60rpx;height:60rpx;">
+                  </image>
+                </view>
+              </view>
+              <!-- 加 -->
+              <picker class="picker1" wx:if="{{item.listRule.length<50}}" bindchange="listRuleFun" range="{{range}}" data-pid="{{index}}">
+                <view class="picker2">
+                  <image src='/images/jia.svg' style=" width: 60rpx;height:60rpx;">
+                  </image>
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- 增加规则 -->
+      <view class="main-i" wx:if="{{dis.length<5}}">
+        <image catchtap='disAddFun' src='/images/add.svg' style=" width: 80rpx;height:80rpx;">
+        </image>
+      </view>
+
+      <!-- 提交 -->
+      <view style="width: 100%;margin-top: 50rpx;">
+        <button catchtap='formSubmit' style="margin: 0 auto;width: 60%;" type="primary" plain="true">
+          提交
+        </button>
+      </view>
+    </view>
+  </scroll-view>
 
 </view>
