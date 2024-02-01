@@ -9,9 +9,6 @@
   position: relative;
 }
 
-.cccc {
-  box-shadow: 1rpx 1rpx 10rpx #929597;
-}
 
 /* 按钮 */
 
@@ -25,16 +22,15 @@
   align-items: center;
   margin-top: 20rpx;
   padding-bottom: 30rpx;
-  box-shadow: 0rpx -2rpx 1rpx #cfcfcf inset;
+  /* box-shadow: 0rpx -2rpx 1rpx #cfcfcf inset; */
 }
 .but button {
   font-size: 32rpx;
    line-height: 70rpx;
    width: 190rpx;
    height: 70rpx;
-  
-   background-color: rgba(221, 229, 245, 0.342);
-   border: 1rpx solid #88878777;
+   /* background-color: rgba(221, 229, 245, 0.342);
+   border: 1rpx solid #88878777; */
   /* box-shadow: 6rpx 6rpx 6rpx #cfcfcf77; */
 }
 .vie {
@@ -72,7 +68,7 @@ scroll-view {
   justify-content: space-around;
   align-items: center;
   margin: 10rpx;
-  border: 1rpx solid #88878777;
+  /* border: 1rpx solid #88878777; */
   box-shadow: 6rpx 6rpx 6rpx #cfcfcf77;
 }
 

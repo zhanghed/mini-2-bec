@@ -1,0 +1,11 @@
+<view class="a">
+	<scroll-view scroll-y scroll-with-animation enable-back-to-top>
+		<view class="main">
+			<block wx:for="{{[1,2,3]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+				<view class="main-i">
+					{{item}}
+				</view>
+			</block>
+		</view>
+	</scroll-view>
+</view>

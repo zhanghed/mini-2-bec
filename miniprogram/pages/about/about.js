@@ -37,7 +37,7 @@ Page({
   },
   toSet: function () {
 		wx.navigateTo({
-      url: '/pages/set/set',
+      url: '/pages/temp/temp',
     })
   },
 

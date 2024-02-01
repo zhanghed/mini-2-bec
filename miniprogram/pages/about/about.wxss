@@ -28,7 +28,7 @@ scroll-view {
 	align-items: center;
 	margin: 22rpx;
 	background-color: rgba(255, 251, 240, 0.185);
-	border: 2rpx solid #cfcdcd77;
+	/* border: 2rpx solid #cfcdcd77; */
 	box-shadow: 10rpx 10rpx 10rpx #cfcfcf77;
 }
 

@@ -179,7 +179,7 @@ Page({
 		let x = event.detail.value.trim() ? event.detail.value.trim() : false
 		if (x && Object.getOwnPropertyNames(App.sss).length >= 500) { //判断记录数
 			wx.showModal({
-				title: '特殊标记数量限制，请及时清理！ ',
+				title: '记录数量过多，请及时清理 ',
 			})
 		} else {
 			if (x) { //有内容，更新

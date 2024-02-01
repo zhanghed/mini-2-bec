@@ -5,12 +5,12 @@
 				<view class="main-i">
 					<!-- 规则名称 -->
 					<view class="main-ii">
-						<view>规则名称（3个字以内）</view>
+						<view>规则名称：</view>
 						<input style="text-align: start;width: 50%;" class="txt" value="{{item.listName}}" bindconfirm='listNameFun' bindblur="listNameFun" data-pid="{{index}}" maxlength='3'></input>
 					</view>
 					<!-- 开始日期 -->
 					<view class="main-ii">
-						<view>开始日期（规则开始日期）</view>
+						<view>开始日期：</view>
 						<picker style="width: 50%;" mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
 							<view class="txt" style="width: 100%;">
 								{{item.listDate}}
@@ -19,7 +19,7 @@
 					</view>
 					<!-- 规则序列 -->
 					<view class="main-ii">
-						<view>规则序列（50个标签以内,3个字以内）</view>
+						<view>规则序列：</view>
 						<view class="rules">
 							<block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
 								<view class="rulesitem {{itemR.color}}">
