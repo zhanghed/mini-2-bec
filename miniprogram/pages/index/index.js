@@ -13,7 +13,7 @@ const App = getApp().globalData
 // 局部变量
 let k = false
 let k2 = [] //输入框展示日期用
-let ran = Math.floor(Math.random() * 12 + 1)
+// let ran = Math.floor(Math.random() * 12 + 1)
 Page({
 	data: {
 		year: Localdate.year,
@@ -30,7 +30,7 @@ Page({
 		mainh: App.mainh,
 		buth: App.buth,
 		week: ['日', '一', '二', '三', '四', '五', '六'],
-		ran: ran,
+		// ran: ran,
 		//下划线位置
 		line: {
 			width: 0,

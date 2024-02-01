@@ -44,7 +44,7 @@
 				<view class='main-i'>
 					<block wx:for="{{item}}" wx:for-item="i" wx:for-index="index" wx:key="index">
 						<!-- 具体格子 -->
-						<view class='main-ii' style="background-color: {{i.sDay?'#f6f6f6':''}};box-shadow: {{i.now_day?'red 0px 0px 0px 4rpx;':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}'>
+						<view class='main-ii' style="background-color: {{i.sDay?'#f6f6f6':''}};box-shadow: {{i.now_day?'red 0px 0px 0px 2rpx;':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}'>
 
 							<!-- 记事 -->
 							<view class="sss main-iii" style="color: red;">

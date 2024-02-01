@@ -32,7 +32,7 @@ Page({
   },
   toOut: function (x) {
     wx.navigateTo({
-      url: '/pages/one_six_six/one_six_six',
+      url: '/pages/me/me',
     })
   },
   toSet: function () {

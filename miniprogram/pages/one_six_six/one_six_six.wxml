@@ -1,6 +1,0 @@
-<view class="main">
-
-	<view class="main-i">
-		<image show-menu-by-longpress="{{true}}" src="/images/me.jpg" mode="widthFix" />
-	</view>
-</view>
