@@ -1,50 +1,51 @@
 <view class="main">
-	<scroll-view scroll-y>
-		<view class="abc">
+  <scroll-view scroll-y>
+    <view class="abc">
 
-			<view class="logo">
-				<image class="logo-l" src='/images/log.png'></image>
+      <view class="logo">
+        <image class="logo-l" src='/images/log.png'></image>
 
-			</view>
+      </view>
 
-			<view class="main-i" bindtap="to_work" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
-				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
-				<view class="txt">
-					规则设置
-				</view>
-				<image class="img" src='/images/go.svg'></image>
-			</view>
+      <view class="main-i" bindtap="to_work" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+        <image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
+        <view class="txt">
+          规则设置
+        </view>
+        <image class="img" src='/images/go.svg'></image>
+      </view>
 
-			<view class="main-i" bindtap="to_note" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
-				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
-				<view class="txt">
-					记事管理
-				</view>
-				<image class="img" src='/images/go.svg'></image>
-			</view>
+      <view class="main-i" bindtap="to_note" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+        <image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
+        <view class="txt">
+          记事管理
+        </view>
+        <image class="img" src='/images/go.svg'></image>
+      </view>
 
-			<view class="main-i" bindtap="toSet" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
-				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
-				<view class="txt">
-					241234123412
-				</view>
-				<image class="img" src='/images/go.svg'></image>
-			</view>
+      <view class="main-i" bindtap="toSet" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+        <image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
+        <view class="txt">
+          241234123412
+        </view>
+        <image class="img" src='/images/go.svg'></image>
+      </view>
+   
 
-			<view class="main-i" bindtap="toOut" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
-				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
-				<view class="txt">
-					联系作者
-				</view>
-				<image class="img" src='/images/go.svg'></image>
-			</view>
+      <view class="main-i" bindtap="toOut" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+        <image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
+        <view class="txt">
+          联系作者
+        </view>
+        <image class="img" src='/images/go.svg'></image>
+      </view>
 
-			<!-- <view class="main-i">
+      <!-- <view class="main-i">
 				<view style="font-size: 30rpx;"><span style="color: red;"> 提示：</span>感谢您的使用，为了保障您的数据安全，请将“标签日历”添加至<span style="color: red;"> 我的小程序 </span>！</view>
 			</view> -->
 
 
 
-		</view>
-	</scroll-view>
+    </view>
+  </scroll-view>
 </view>
