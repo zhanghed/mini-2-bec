@@ -1,78 +1,82 @@
 .main {
-	width: 100vw;
-	height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 scroll-view {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .abc {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 
 .main-i {
-	width: 80%;
-	font-size: 30rpx;
-	padding: 20rpx;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
-	align-items: center;
-	margin: 22rpx;
-	background-color: rgba(255, 251, 240, 0.185);
-	/* border: 2rpx solid #cfcdcd77; */
-	box-shadow: 10rpx 10rpx 10rpx #cfcfcf77;
+  width: 80%;
+  font-size: 30rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 32rpx;
+  background-color: rgba(255, 251, 240, 0.185);
+  /* border: 2rpx solid #cfcdcd77; */
+  box-shadow: 10rpx 10rpx 10rpx #cfcfcf77;
 }
 
 .txt {
-	width: 80%;
+  width: 80%;
 }
 
 .img {
-	width: 30rpx;
-	height: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .logo {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-l {
-	width: 150rpx;
-	height: 150rpx;
-	margin: 30rpx 0;
-	border-radius: 36%;
-	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 30rpx 0;
+  border-radius: 36%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .cccc {
-	box-shadow: 1rpx 1rpx 10rpx #929597;
+  box-shadow: 1rpx 1rpx 10rpx #929597;
 }
 
 .shuoming {
-	width: 80%;
-	font-size: 30rpx;
-	padding: 20rpx;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
-	align-items: flex-start;
-	margin: 22rpx;
-	background-color: rgba(255, 251, 240, 0.185);
-	/* border: 2rpx solid #cfcdcd77; */
-	box-shadow: 10rpx 10rpx 10rpx #cfcfcf77;
-	font-size: 25rpx;
+  width: 80%;
+  font-size: 30rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 32rpx;
+  background-color: rgba(255, 251, 240, 0.185);
+  /* border: 2rpx solid #cfcdcd77; */
+  box-shadow: 10rpx 10rpx 10rpx #cfcfcf77;
+  font-size: 28rpx;
+}
+
+.shuoming>view {
+  margin: 5rpx 0;
 }

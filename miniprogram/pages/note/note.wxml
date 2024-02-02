@@ -33,7 +33,7 @@
 				</view>
 			</block>
 			<!-- 提交 -->
-			<view wx:if="{{arr.length>0}}" style="width: 100%;margin: 50rpx 0;">
+			<view style="width: 100%;margin: 50rpx 0;">
 				<button catchtap='formSubmit' style="margin: 0 auto;width: 60%;" type="primary" plain="true">
 					提交
 				</button>

@@ -44,7 +44,7 @@
 				<view class='main-i'>
 					<block wx:for="{{item}}" wx:for-item="i" wx:for-index="index" wx:key="index">
 						<!-- 具体格子 -->
-						<view class='main-ii' style="background-color: {{i.sDay?'#f6f6f6':''}};box-shadow: {{i.now_day?'red 0px 0px 0px 2rpx;':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}'>
+						<view class='main-ii' style="background-color: {{i.sDay?'#f6f6f6':''}};box-shadow: {{i.now_day?'red 0px 0px 0px 4rpx;':''}};" bindtap="{{i.sDay?'click_block':''}}" data-pid='{{m1.arrayTostring([i.sYear,i.sMonth,i.sDay])}}' data-pid2='{{i}}'>
 
 							<!-- 记事 -->
 							<view class="sss main-iii" style="color: red;">
@@ -88,18 +88,6 @@
 		</view>
 	</view>
 
-</view>
-
-
-<!-- 遮罩 -->
-<view class='mask' hidden='{{!zi}}'></view>
-
-<!-- 输入框 -->
-<view wx:if="{{zi}}" style="width:100%;size:20rpx">
-	<view class='txt'>
-		<view class="txt-top">{{k2[0]}}年{{k2[1]}}月{{k2[2]}}日</view>
-		<input class="txt-body" value='{{sss[k]}}' bindblur="blur" bindconfirm='confirm' maxlength='12' focus="{{zi}}" placeholder="请编辑内容（12个字以内）"></input>
-	</view>
 </view>
 
 <!-- wxs_函数 -->
