@@ -5,21 +5,21 @@
 				<view class="main-i">
 					<!-- 规则名称 -->
 					<view class="main-ii">
-						<view>规则名称：</view>
+						<view>规则名称</view>
 						<input style="text-align: start;width: 50%;" class="txt" value="{{item.listName}}" bindconfirm='listNameFun' bindblur="listNameFun" data-pid="{{index}}" maxlength='3'></input>
 					</view>
 					<!-- 开始日期 -->
 					<view class="main-ii">
-						<view>开始日期：</view>
+						<view>开始日期</view>
 						<picker style="width: 50%;" mode="date" value="" start="1900-01-01" end="2049-12-31" bindchange="listDateFun" data-pid="{{index}}">
 							<view class="txt" style="width: 100%;">
 								{{item.listDate}}
 							</view>
 						</picker>
 					</view>
-					<!-- 规则序列 -->
+					<!-- 标签序列 -->
 					<view class="main-ii">
-						<view>规则序列：</view>
+						<view>标签序列</view>
 						<view class="rules">
 							<block wx:for="{{item.listRule}}" wx:for-item="itemR" wx:for-index="indexR" wx:key="indexR">
 								<view class="rulesitem {{itemR.color}}">
@@ -50,13 +50,11 @@
 					</view>
 				</view>
 			</block>
-
 			<!-- 增加 -->
 			<view class="main-i-add" catchtap='disAddFun' wx:if="{{dis.length<5}}">
 				<image src='/images/add.svg' style=" width: 80rpx;height:80rpx;">
 				</image>
 			</view>
-
 			<!-- 提交 -->
 			<view style="width: 100%;margin: 50rpx 0;">
 				<button catchtap='formSubmit' style="margin: 0 auto;width: 60%;" type="primary" plain="true">
@@ -65,7 +63,5 @@
 			</view>
 		</view>
 	</scroll-view>
-
-
 
 </view>

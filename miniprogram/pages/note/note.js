@@ -1,115 +1,183 @@
 //全局变量
 const App = getApp().globalData
-//局部变量
-let sss = App.sss
-// let arr = JSON.parse(JSON.stringify(App.sss))
 
+let modal = {
+	"arr": [{
+		"count": 0,
+		"month": "1"
+	}, {
+		"count": 0,
+		"month": "2"
+	}, {
+		"count": 0,
+		"month": "3"
+	}, {
+		"count": 0,
+		"month": "4"
+	}, {
+		"count": 0,
+		"month": "5"
+	}, {
+		"count": 0,
+		"month": "6"
+	}, {
+		"count": 0,
+		"month": "7"
+	}, {
+		"count": 0,
+		"month": "8"
+	}, {
+		"count": 0,
+		"month": "9"
+	}, {
+		"count": 0,
+		"month": "10"
+	}, {
+		"count": 0,
+		"month": "11"
+	}, {
+		"count": 0,
+		"month": "12"
+	}, ],
+	"year": "",
+	"count": 0
+}
+let sss = null
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		arr:[]
+		arr: [],
 	},
-	//点击记录
-	one: function (e) {
-		let index = e.currentTarget.dataset.pid
-		this.data.arr[index][2] = !this.data.arr[index][2] //修改标记
-		this.setData({
-			arr: this.data.arr
-		})
-	},
-	//全选
-	click_all: function () {
-		for (let item of this.data.arr) {
-			item[2] = false
-		}
-		this.setData({
-			arr: this.data.arr
-		})
-	},
-	//反选
-	click_invert: function () {
-		for (let item of this.data.arr) {
-			item[2] = !item[2]
-		}
-		this.setData({
-			arr: this.data.arr
-		})
-	},
-	//删除
-	click_delete: function (e) {
-		let that = this
-		let x = false
-		for (let item of this.data.arr) { //查看是否有选中的记录
-			if (!item[2]) {
-				x = true
-				break
-			}
-		}
-		if (x) {
-			wx.showModal({
-				title: '确认删除？',
-				success: function (res) {
-					if (res.confirm) {
-						for (let item of that.data.arr) {
-							if (!item[2]) { //删除标记为假的数据
-								let a = item[0].replaceAll('/', 'z')
-								delete sss[a]
-							}
-						}
-						App.sss = sss
-						// wx.setStorageSync('sss', sss);
-						console.log('text');
-						(async () => { //更新云端数据
-							await wx.cloud.callFunction({
-								name: 'text',
-								data: {
-									text: JSON.stringify(sss)
-								}
-							})
-						})()
-						that.data.arr = that.show(sss)
-						that.setData({
-							arr: that.data.arr
-						})
-					}
-				}
-			})
-		}
-	},
-	//显示
-	show: function (a) {
-		wx.showLoading({
-			title: '加载中',
-			mask: true
-		})
-		delete a['date']
-		a = Object.entries(a) //转数组
-		a = a.map(item => { //日期转格式
-			return [item[0].replaceAll('z', '/'), item[1], true]
-		})
-		a = a.sort((a, b) => { //根据日期排序
-			return Date.parse(b[0]) - Date.parse(a[0]);
-		})
-		wx.hideLoading()
-		return a
-	},
+
 	/**
 	 * 生命周期函数--监听页面加载
-	*/
-	onLoad: function (options) {
-		// let a = JSON.parse(JSON.stringify(App.sss))
-		let sss = JSON.parse(JSON.stringify(App.sss))
-		let arr = this.show(sss)
-		// 复位
-		for (let item of arr) {
-			item[2] = true
+	 */
+	onLoad(options) {
+		sss = JSON.parse(JSON.stringify(App.sss))
+		let arr = []
+		// !--__--! 统计每个月的记录条数
+		for (let key in sss) {
+			const date = key.split("z")
+			const y = String(date[0])
+			const m = String(date[1])
+			let ty = arr.find(i => i.year === y)
+			if (ty) {
+				let tm = ty.arr.find(i => i.month === m)
+				tm.count += 1
+				ty.count += 1
+			} else {
+				let modali = JSON.parse(JSON.stringify(modal))
+				modali.year = y
+				let tm = modali.arr.find(i => i.month === m)
+				tm.count += 1
+				modali.count += 1
+				arr.push(modali)
+			}
 		}
+		arr.sort((a, b) => b.year - a.year)
 		this.setData({
 			arr: arr
 		})
+
+	},
+	// 删除
+	disCloseFun(event) {
+		let that = this
+		wx.showModal({
+			title: '确认删除？',
+			success: function (res) {
+				if (res.confirm) {
+					let year = Number(event.currentTarget.dataset.year)
+					let no = Number(event.currentTarget.dataset.pid)
+					let arr = that.data.arr
+					arr.splice(no, 1)
+					for (let key in sss) {
+						if (key.indexOf(year) == 0) {
+							delete sss[key]
+						}
+					}
+					that.setData({
+						arr: arr
+					});
+				}
+			}
+		})
+	},
+	// 提交
+	formSubmit: function () {
+		wx.showModal({
+			title: '确认提交？',
+			success: function (res) {
+				if (res.confirm) {
+					(async () => {
+						wx.showLoading({
+							title: '加载中',
+							mask: true
+						})
+						await wx.cloud.callFunction({
+							name: 'text',
+							data: {
+								text: JSON.stringify(sss)
+							}
+						})
+						wx.hideLoading()
+						wx.reLaunch({
+							url: '/pages/index/index'
+						})
+					})()
+				}
+			}
+		})
+	},
+	/**
+	 * 生命周期函数--监听页面初次渲染完成
+	 */
+	onReady() {
+
 	},
 
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	onShow() {
+
+	},
+
+	/**
+	 * 生命周期函数--监听页面隐藏
+	 */
+	onHide() {
+
+	},
+
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload() {
+
+	},
+
+	/**
+	 * 页面相关事件处理函数--监听用户下拉动作
+	 */
+	onPullDownRefresh() {
+
+	},
+
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
+	onReachBottom() {
+
+	},
+
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage() {
+
+	}
 })

@@ -4,8 +4,7 @@
     "pages/about/about",
     "pages/note/note",
     "pages/work/work",
-    "pages/me/me",
-    "pages/temp/temp"
+    "pages/me/me"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

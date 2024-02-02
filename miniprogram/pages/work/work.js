@@ -59,7 +59,7 @@ const colors = [{
 // 规则选择器集合
 const range = function () {
   let temp = colors.map(i => i.name)
-  temp.push('自定义')
+  // temp.push('自定义')
   return temp
 }
 Page({
@@ -119,7 +119,7 @@ Page({
 		show[no].listRule.push(this.showFun(this.data.range[rangeNo]))
 		this.setData({
 			dis,
-			show
+			show,
 		})
 	},
 	// 删除规则标签

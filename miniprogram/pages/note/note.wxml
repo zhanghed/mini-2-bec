@@ -1,61 +1,44 @@
-<view class="abc">
-
-	<view class="main">
-
-		<view class="vie" wx:if="{{arr.length>0}}">
-			<scroll-view scroll-y>
-				<block wx:for="{{arr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-					<view class="vi">
-						<view class="vi-i" catchtap='one' hover-class="cccc" data-pid='{{index}}'>
-							<view class="vi-ii-a" style="background-color:{{item[2]?'':'#504e4e'}}"></view>
-							<view class="vi-ii-1">
-								{{m1.stringToarray(item[0])[0]}}年{{m1.stringToarray(item[0])[1]}}月{{m1.stringToarray(item[0])[2]}}日
-							</view>
-							<view class="vi-ii-2">
-								{{item[1]}}
-							</view>
+<view class="a">
+	<scroll-view scroll-y scroll-with-animation enable-back-to-top>
+		<view class="main">
+			<block wx:for="{{arr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+				<view class="main-i">
+					<!-- 年 -->
+					<view class="top">
+						<view>
+							{{item.year}}年:{{item.count}}条
 						</view>
 					</view>
-				</block>
-
-
-
-			</scroll-view>
-
-		</view>
-
-		<view class="but" wx:if="{{arr.length>0}}">
-			<view>
-				<button catchtap='click_all' type="primary" plain='true'>
-					全选
+					<!-- 月 -->
+					<view class="bot">
+						<view class="bot-i">
+							<block wx:for="{{item.arr}}" wx:for-item="itemi" wx:for-index="indexi" wx:key="indexi">
+								<view class="bot-i-main" style="height: {{(itemi.count/90)*200+1}}rpx;">
+									<view class="bot-i-count">{{itemi.count}}</view>
+								</view>
+							</block>
+						</view>
+						<view class="bot-bottom">
+							<block wx:for="{{item.arr}}" wx:for-item="itemi" wx:for-index="indexi" wx:key="indexi">
+								<view wx:if="{{itemi.month==1 || itemi.month==6||itemi.month==12}}">{{itemi.month}}月</view>
+								<view wx:else></view>
+							</block>
+						</view>
+					</view>
+					<!-- 删除 -->
+					<view class="close">
+						<image catchtap='disCloseFun' data-year="{{item.year}}" data-pid="{{index}}" src='/images/ashbin.svg' style=" width: 50rpx;height:50rpx;">
+						</image>
+					</view>
+				</view>
+			</block>
+			<!-- 提交 -->
+			<view wx:if="{{arr.length>0}}" style="width: 100%;margin: 50rpx 0;">
+				<button catchtap='formSubmit' style="margin: 0 auto;width: 60%;" type="primary" plain="true">
+					提交
 				</button>
 			</view>
-			<view>
-				<button catchtap='click_invert' type="primary" plain='true'>
-					反选
-				</button>
-			</view>
-			<view>
-				<button catchtap='click_delete' type="primary" plain='true'>
-					删除
-				</button>
-			</view>
 		</view>
-
-		<view wx:else class="im">
-			暂无内容
-		</view>
-
-	</view>
+	</scroll-view>
 
 </view>
-
-<!-- wxs_函数 -->
-<wxs module="m1">
-	function stringToarray(string) {
-		return string.split("/")
-	}
-	module.exports = {
-		stringToarray: stringToarray
-	}
-</wxs>

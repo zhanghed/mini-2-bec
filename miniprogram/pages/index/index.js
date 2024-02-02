@@ -177,7 +177,7 @@ Page({
 	//输入框输入完成
 	confirm: function (event) {
 		let x = event.detail.value.trim() ? event.detail.value.trim() : false
-		if (x && Object.getOwnPropertyNames(App.sss).length >= 500) { //判断记录数
+		if (x && Object.getOwnPropertyNames(App.sss).length >= 600) { //判断记录数
 			wx.showModal({
 				title: '记录数量过多，请及时清理 ',
 			})
