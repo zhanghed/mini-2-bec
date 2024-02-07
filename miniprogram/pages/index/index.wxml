@@ -54,7 +54,7 @@
 							</view>
 							<!-- 日历 -->
 							<view class='main-iii'>
-								<view class="main-iiii" >
+								<view class="main-iiii">
 									{{i.sDay}}
 								</view>
 							</view>

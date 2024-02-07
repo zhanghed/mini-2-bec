@@ -30,14 +30,14 @@ Page({
       url: '/pages/note/note'
     })
   },
-  toOut: function (x) {
+  to_me: function (x) {
     wx.navigateTo({
       url: '/pages/me/me',
     })
   },
-  toSet: function () {
+  to_illustrate: function () {
 		wx.navigateTo({
-      url: '/pages/temp/temp',
+      url: '/pages/illustrate/illustrate',
     })
   },
 

@@ -23,37 +23,22 @@
 				<image class="img" src='/images/go.svg'></image>
 			</view>
 
-			<view class="main-i" bindtap="toOut" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+			<view class="main-i" bindtap="to_illustrate" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
+				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
+				<view class="txt">
+					程序说明
+				</view>
+				<image class="img" src='/images/go.svg'></image>
+			</view>
+
+			<view class="main-i" bindtap="to_me" hover-class='cccc' hover-start-time='10' hover-stay-time='40' hover-stop-propagation='{{true}}'>
 				<image src='/images/1.svg' style='width: 45rpx;height: 45rpx;'></image>
 				<view class="txt">
 					联系作者
 				</view>
 				<image class="img" src='/images/go.svg'></image>
 			</view>
-
-			<view class="shuoming">
-				<view>
-					说明：
-				</view>
-				<view>
-					数据：弃用本地缓存存储，全面启用云端存储，数据同步体验更好。
-				</view>
-				<view>
-					广告：由于使用的是微信云存储，每月需要付费19元，因此加入了封面广告。
-				</view>
-				<view>
-					规则：最多支持5组规则；规则名3个字以内；开始日期为标签序列生效的日期；标签序列最多创建50个标签，可自定义3个字以内的名称，提交后生效。
-				</view>
-				<view>
-					记事：首页可编辑12个字以内的记事内容，记事标记最多添加600个，记事管理页面以年为单位统计，可进行手动删除。提交后生效。
-				</view>
-				<view>
-					分享：首页可使用右上角分享功能，只会分型规则数据，不会分享记事数据，并且对方打开分享链接后，会提示是否启用新规则。
-				</view>
-				<view>
-					如果您有意见或建议，欢迎联系作者。
-				</view>
-			</view>
+			
 		</view>
 	</scroll-view>
 </view>
